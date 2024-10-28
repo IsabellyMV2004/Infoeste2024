@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin", "darwin-arm64", "linux-musl", "debian-openssl-1.1.x"]
 }
 
 datasource db {
@@ -9,24 +10,24 @@ datasource db {
 
 model User {
   id       String @id @default(cuid())
-  email    String
+  email    String @unique
   password String
   name     String
   notes    Note[]
 }
 
 model Note {
-  id       String   @id @default(cuid())
-  title    String
-  content  String
-  checked  Boolean  @default(false)
-  priority Priority
-  authorId String
-  author   User     @relation(fields: [authorId], references: [id])
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  completed Boolean  @default(false)
+  priority  Priority
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
 }
 
 enum Priority {
   LOW
   MEDIUM
-  HIgh
+  HIGH
 }

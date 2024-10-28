@@ -1,6 +1,6 @@
 {
-    "watch":["src"],
-    "ext":"ts",
-    "ignore":["dist"],
-    "exec":"nest build && node dist/main.js"
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["dist"],
+  "exec": "nest build && node dist/main.js"
 }
